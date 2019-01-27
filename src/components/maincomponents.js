@@ -30,18 +30,28 @@ class Main extends Component {
 
     const HomePage = () => {
       return(
-          <Home 
+          <Home
+          dish={this.state.dishes.filter((dish) => dish.featured)[0]}
+          promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
+          leader={this.state.leaders.filter((leader) => leader.featured)[0]}
           />
       );
-    }
+    };
 
-  
+    const DishWithId = ({match}) => {
+        return(
+            <DishDetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
+              comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+        );
+      };
+
     return (
       <div>
           <Header/>
         <Switch>
               <Route path='/home' render={HomePage} />
               <Route exact path='/menu' render={() => <Menu dishes={this.state.dishes} />} />
+              <Route path='/menu/:dishId' component={DishWithId} />
               <Route exact path='/contactus' render={Contact} />} />
               <Route exact path='/aboutus' render={() => <About leaders={this.state.leaders} />} />
               <Redirect to="/home" />
