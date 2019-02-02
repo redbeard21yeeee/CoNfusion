@@ -9,7 +9,6 @@ import DishDetail from './DishDetailComponent';
 import { DISHES } from './shared/dishes';
 import Header from './headercomponent';
 import Footer from './FooterComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
