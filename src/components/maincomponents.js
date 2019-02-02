@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
+// import { Navbar, NavbarBrand } from 'reactstrap';
 import { COMMENTS } from './shared/comments';
 import { PROMOTIONS } from './shared/promotions';
 import { LEADERS } from './shared/leaders';
