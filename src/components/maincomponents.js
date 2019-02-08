@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 // import { Navbar, NavbarBrand } from 'reactstrap';
-import { COMMENTS } from './shared/comments';
-import { PROMOTIONS } from './shared/promotions';
-import { LEADERS } from './shared/leaders';
+import { COMMENTS } from '../shared/comments';
+import { PROMOTIONS } from '../shared/promotions';
+import { LEADERS } from '../shared/leaders';
 import Menu from './MenuComponent';
 import Home from './HomeComponents';
 import DishDetail from './DishDetailComponent';
-import { DISHES } from './shared/dishes';
+import { DISHES } from '../shared/dishes';
 import Header from './headercomponent';
 import Footer from './FooterComponent';
 import About from './AboutComponent';
