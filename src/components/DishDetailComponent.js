@@ -3,6 +3,7 @@ import {Card, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem, Button, 
     Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
 
 
 const required = (val) => val && val.length;
@@ -19,7 +20,6 @@ class CommentForm extends Component {
         }
         this.toggleModal = this.toggleModal.bind(this);
         this.handleCommentForm = this.handleCommentForm.bind(this);
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     toggleModal() {
@@ -29,8 +29,8 @@ class CommentForm extends Component {
     }
 
     handleCommentForm(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        this.ToggleModal ();
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
         // event.preventDefault();
     }
     render() {
@@ -143,7 +143,25 @@ function RenderDish({ dish }) {
 
 const DishDetail = (props) => {
     const { dish, comments } = props;
-    if (dish != null) {
+    if (props.isLoading) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+    else if (props.errMess) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        );
+    }
+    else if (props.dish != null) 
         return (
             <div className="container">
                 <div className="row">
@@ -159,13 +177,13 @@ const DishDetail = (props) => {
                 <div className="row">
                     <RenderDish dish={dish} />
                     <RenderComments comments={props.comments}
-        addComment={props.addComment}
-        dishId={props.dish.id}
+                    addComment={props.addComment}
+                    dishId={props.dish.id}
       />
                 </div>
             </div>
         );
     }
-}
+
 
 export default DishDetail;
