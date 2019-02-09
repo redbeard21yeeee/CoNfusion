@@ -8,7 +8,7 @@ import Home from './HomeComponents';
 import DishDetail from './DishDetailComponent';
 import { DISHES } from '../shared/dishes';
 import Header from './headercomponent';
-import { addComment, fetchDishes } from '../redux/ActionCreators';
+//import { addComment, fetchDishes } from '../redux/ActionCreators';
 import Footer from './FooterComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
@@ -16,7 +16,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 //import { addComment } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
-import { addComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
+//import { addComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
 import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
 
 
