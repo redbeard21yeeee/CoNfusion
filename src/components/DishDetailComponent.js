@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {Card, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem, Button, Row, Col, Label,
+import {Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Row, Col, Label,
     Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import { baseUrl } from '../shared/baseUrl';
 
 
 const required = (val) => val && val.length;
@@ -109,23 +110,27 @@ function RenderComments({comments, postComment, dishId}) {
     if (comments != null) {
         const commentItems = comments.map((comment) => {
             return (
+                <Fade in>
                 <li key={comment.id} className='list-unstyled'>
-                    <div className='mb-2'>{comment.comment}</div>
-                    <div className='mb-2'>--{comment.author} {comment.date}</div>
+                <div className='mb-2'>{comment.comment}</div>
+                <div className='mb-2'>--{comment.author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))}</div>
                 </li>
+                </Fade>
             );
         });
-
         return (
-            <div className='col-12 col-md-5 m-1'>
-                <h4>Comments</h4>
+            <div className='m-1 col-sm-12 col-md-5'>
+                    <h4>Comments</h4>
                 <ul>
+                <Stagger>
                     {commentItems}
+                </Stagger>
                 </ul>
                 <CommentForm dishId={dishId} postComment={postComment} />
             </div>
-
         );
+    } else {
+        return <div/>
     }
 }
 
