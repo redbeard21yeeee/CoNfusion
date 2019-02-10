@@ -4,6 +4,7 @@ import {Card, CardImg, CardText, CardTitle, Breadcrumb, BreadcrumbItem, Button, 
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 const required = (val) => val && val.length;
@@ -132,11 +133,19 @@ function RenderComments({comments, postComment, dishId}) {
 function RenderDish({ dish }) {
     return (
         <div className='col-12 col-md-5 m-1'>
-            <Card>
-                <CardImg width='100%' src={dish.image} alt={dish.name} />
-                <CardTitle>{dish.name}</CardTitle>
-                <CardText>{dish.description}</CardText>
-            </Card>
+             <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                <Card>
+                    <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </FadeTransform>
         </div>
     );
 }
