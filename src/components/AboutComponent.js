@@ -8,14 +8,10 @@ import { FadeTransform, Fade, Stagger} from 'react-animation-components';
 function RenderLeader({leader}) {
 
     return (
-        <div key={leader.id} className="col-12 mt-5">
-               
-                      <FadeTransform
-                in
-                transformProps={{
-                    exitTransform: 'scale(0.5) translateY(-50%)'
-                }}>
-        
+        <div key={leader.id} className="col-12 mt-5">   
+        <Fade in
+
+        >
         <Media tag="li">
           <Media left middle>
           <Media object src={baseUrl + leader.image} alt={leader.name} />
@@ -26,8 +22,7 @@ function RenderLeader({leader}) {
             <p>{leader.description}</p>
           </Media>
         </Media>
-        </FadeTransform>
-        
+        </Fade>
       </div>
     );
 }
@@ -36,9 +31,7 @@ function RenderLeader({leader}) {
         const leaders = props.leaders.leaders.map((leader) => {
             return (
                 <div className="col-12" key={leader.id}>
-                
-                    <RenderLeader leader={leader} />
-                
+                    <RenderLeader  leader={leader}  />
                 </div>
             );
         });
