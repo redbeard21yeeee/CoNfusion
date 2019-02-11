@@ -216,7 +216,7 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
     .then(response => response.json())
     .then(newFeedback => alert(JSON.stringify(newFeedback)))
     //.then(response => dispatch(addComment(response)))
-    .then(error =>  { console.log('post comments', error.message);
+    .catch(error =>  { console.log('post comments', error.message);
       alert('Your feedback could not be posted\nError: '+error.message); });
 };
     
